@@ -35,7 +35,7 @@ public class InterfaceConsola {
          System.out.println("1. Cada turno colocas una casilla con una coordenada fila-columna");
          System.out.println("2. Las filas y columnas están numeradas de 1 a 3");
          System.out.println("3. Jugarás contra una malévola IA destructora de mundos");
-         System.out.println("4. Su casillas se marcarán con una C y las tuyas con la P");
+         System.out.println("4. Sus casillas se marcarán con una C y las tuyas con la P");
          System.out.println("5. Ganarás si logras hacer tres en raya en una fila, columna o diagonal antes que la CPU");
          System.out.println("6. ...bueno, en realidad eso era todo, ¿ARE TOU READY?");
          System.out.print("(¿(Y) or (N)?: ");
