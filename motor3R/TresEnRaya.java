@@ -43,8 +43,8 @@ public class TresEnRaya {
         
     }
 
-   public boolean analizarPos(char[][] otro, int a, int b) {
-    //comprueba que la posición permite poner ficha  la CPU
+   private boolean analizarPos(char[][] otro, int a, int b) {
+    //comprueba que la posición permite poner ficha
         if (otro[a][b] == '-') {
             return true;
         } else {
@@ -52,8 +52,8 @@ public class TresEnRaya {
         }
     }
 
-    public boolean analizarPosJ(char[][] otro, int a, int b) {
-        //comprueba que la posición permite poner ficha al jugador
+    private boolean analizarPosJ(char[][] otro, int a, int b) {
+        //comprueba que la posición permite poner ficha
             if (otro[a-1][b-1] == '-') {
                 return true;
             } else {
@@ -110,5 +110,7 @@ public class TresEnRaya {
 
 
 
+
+    
 
     
