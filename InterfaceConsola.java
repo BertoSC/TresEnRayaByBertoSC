@@ -42,7 +42,7 @@ public class InterfaceConsola {
 
             
 
-    void instrucciones(){
+    private void instrucciones(){
          System.out.println("\t\t\t\t-----------------------\t");
          System.out.println("\t\t\t\tTRES EN RAYA by BertoSC\t");
          System.out.println("\t\t\t\t-----------------------\t");
@@ -73,7 +73,7 @@ public class InterfaceConsola {
         } 
     }
 
-    public void estructura() throws InterruptedException{
+    private void estructura() throws InterruptedException{
         game.gameOver(game.getTablero());
         while(game.gameOver(game.getTablero()) ==false || game.victoria(jugador) ==false || game.victoria(cpu)==false){
             System.out.println(); 
@@ -146,7 +146,7 @@ public class InterfaceConsola {
     }
 
 
-    public void imprimirTablero(char[][] mapa){
+    private void imprimirTablero(char[][] mapa){
 
         for (int i=0; i<mapa.length; i++){
             for (int j=0; j<mapa[i].length; j++){
@@ -156,7 +156,7 @@ public class InterfaceConsola {
         }
     }
     
-    public void imprimirMarcador(){
+    private void imprimirMarcador(){
         System.out.println("JUGADOR: "+contadorJ+" CPU: "+contadorC);
     }
 
