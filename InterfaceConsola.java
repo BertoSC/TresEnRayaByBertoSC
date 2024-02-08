@@ -5,17 +5,36 @@ public class InterfaceConsola {
     private TresEnRaya game;
     private char jugador;
     private char cpu;
-    private char eleccion;
+    private char eleccionI;
+    private char eleccionR;
     private Scanner entrada;
-   
+    private boolean rep;
+    private int contadorJ;
+    private int contadorC;
+
 
     public InterfaceConsola() throws InterruptedException{
         entrada= new Scanner(System.in);
         this.jugador='P';
         this.cpu='C';
+        this.rep=true;
+        this.contadorJ=0;
+        this.contadorC=0;
         instrucciones();
-        this.game=new TresEnRaya();
-        estructura();
+        while(rep){ 
+            this.game=new TresEnRaya();
+            estructura();
+            System.out.print("TRY AGAIN ¿(Y) or (N)?: ");
+            eleccionR= entrada.next().toUpperCase().charAt(0);
+                if (eleccionR=='Y'){
+                    rep=true;
+                    System.out.println();
+                    imprimirMarcador();
+                    System.out.println();
+                } else {
+                    rep=false;
+                }
+        }
                
 
         
@@ -39,8 +58,8 @@ public class InterfaceConsola {
          System.out.println("5. Ganarás si logras hacer tres en raya en una fila, columna o diagonal antes que la CPU");
          System.out.println("6. ...bueno, en realidad eso era todo, ¿ARE TOU READY?");
          System.out.print("(¿(Y) or (N)?: ");
-         eleccion = entrada.next().toUpperCase().charAt(0);
-         if (eleccion=='Y') {
+         eleccionI = entrada.next().toUpperCase().charAt(0);
+         if (eleccionI=='Y') {
             System.out.println();
             System.out.println("\t\t\t\tLet's GO!\t");
             System.out.println();
@@ -71,8 +90,24 @@ public class InterfaceConsola {
                 System.out.println();
                 System.out.println("YOU WIN");
                 System.out.println();
+                contadorJ++;
                 imprimirTablero(game.getTablero());
+                System.out.println();
+                
+                imprimirMarcador();
+                System.out.println();
                 return;
+            }
+            if (game.gameOver(game.getTablero())){
+                System.out.println();
+                System.out.println("DRAW GAME");
+                System.out.println();
+                imprimirTablero(game.getTablero());
+                System.out.println();
+                imprimirMarcador();
+                System.out.println();
+                return;
+
             }
             System.out.println(); 
             imprimirTablero(game.getTablero()); 
@@ -84,11 +119,26 @@ public class InterfaceConsola {
                 System.out.println();
                 System.out.println("YOU LOSE");
                 System.out.println();
+                contadorC++;
                 imprimirTablero(game.getTablero());
+                System.out.println();
+                imprimirMarcador();
+                System.out.println();
                 return; 
             }
-            imprimirTablero(game.getTablero());
-            game.gameOver(game.getTablero()); 
+            if (game.gameOver(game.getTablero())){
+                System.out.println();
+                System.out.println("DRAW GAME");
+                System.out.println();
+                imprimirTablero(game.getTablero());
+                System.out.println();
+                imprimirMarcador();
+                System.out.println();
+                return;
+
+            }
+            
+           
 
         } 
        
@@ -105,7 +155,10 @@ public class InterfaceConsola {
             System.out.println(); 
         }
     }
-
+    
+    public void imprimirMarcador(){
+        System.out.println("JUGADOR: "+contadorJ+" CPU: "+contadorC);
+    }
 
     public static void main(String[] args) throws InterruptedException {
         
