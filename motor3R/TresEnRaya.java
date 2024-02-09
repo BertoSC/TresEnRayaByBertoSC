@@ -1,16 +1,25 @@
 package motor3R;
 import java.util.Random;
+   /** Juego clásico del Tres en Raya 
+     Consiste en un jugador 'P' (que mueve primero) vs una CPU 'C'
+      Incluye diversos métodos para comprobar el estado del  tablero y
+      controlar la partida. 
+     */
+  
 public class TresEnRaya {
+    
     private char[][] tablero;
     
-     
+/** Constructor de la clase que inicializa el tablero */
     public TresEnRaya(){
+        
         this.tablero= new char [][] {{'-','-','-'}, {'-','-','-'}, {'-','-','-'}};
         
     }
 
-    // devuelve una copia del tablero para asegurarnos de que no se manipula externamente
+ /** getTablero: Devuelve una copia de un tablero a una clase externa que lo solicite */
     public char[][] getTablero() {
+       
         char[][] tablerocopia = new char[3][3];
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
@@ -20,9 +29,9 @@ public class TresEnRaya {
         return tablerocopia;
     }
 
-
+/**  turnoP: Se encarga del turno del jugador*/
     public void turnoP(int fila, int columna){
-        //turno del jugador
+        
         if (analizarPosJ(tablero, fila, columna)){
             tablero[fila-1][columna-1]='P';
         } else {
@@ -33,9 +42,9 @@ public class TresEnRaya {
 
     }   
 
-
+/** turnoC: Se encarga del turno de la CPU (modo fácil) */
    public void turnoC(){
-      //turno de la máquina en modo fácil
+      
        Random r= new Random(); 
        int filC= r.nextInt(3);
        int colC=r.nextInt(3);
@@ -47,27 +56,27 @@ public class TresEnRaya {
             }
         
     }
-
+ /** analizarPos: Comprueba que la posición le permite poner ficha a la CPU */
    private boolean analizarPos(char[][] otro, int a, int b) {
-    //comprueba que la posición permite poner ficha
+   
         if (otro[a][b] == '-') {
             return true;
         } else {
             return false;
         }
     }
-
+/** analizarPosJ: Comprueba que la posición del jugador permite poner ficha */
     private boolean analizarPosJ(char[][] otro, int a, int b) {
-        //comprueba que la posición del jugador permite poner ficha
+        
             if (otro[a-1][b-1] == '-') {
                 return true;
             } else {
                 return false;
             }
         }
-
+    /** gameOver: Verifica si el tablero está completo y, por tanto, se acaba la partida */ 
    public boolean gameOver(char[][] mapita){
-    // se verifica si el tablero está completo
+
     int contador=0;
         for (int i=0; i<mapita.length; i++){
             for (int j=0; j<mapita[i].length; j++){
@@ -83,23 +92,23 @@ public class TresEnRaya {
             return false;
         }
     }
-
+/** victoria: Comprueba si existe una victoria por filas, columnas o diagonales */
     public boolean victoria(char ficha) {
-        // comprobar filas
+        
         for (int i = 0; i < 3; i++) {
             if (tablero[i][0] == ficha && tablero[i][1] == ficha && tablero[i][2] == ficha) {
                 return true;
             }
         }
 
-        // comprobar columnas
+        
         for (int j = 0; j < 3; j++) {
             if (tablero[0][j] == ficha && tablero[1][j] == ficha && tablero[2][j] == ficha) {
                 return true;
             }
         }
 
-        // combrobar diagonales
+        
         if ((tablero[0][0] == ficha && tablero[1][1] == ficha && tablero[2][2] == ficha) ||
             (tablero[0][2] == ficha && tablero[1][1] == ficha && tablero[2][0] == ficha)) {
             return true;
@@ -115,9 +124,5 @@ public class TresEnRaya {
 
 
 
-
-
-
-    
 
     
