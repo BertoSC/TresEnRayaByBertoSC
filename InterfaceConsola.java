@@ -21,7 +21,7 @@ public class InterfaceConsola {
         this.contadorJ=0;
         this.contadorC=0;
         instrucciones();
-        while(rep){ 
+        while(rep){  
             this.game=new TresEnRaya();
             estructura();
             System.out.print("TRY AGAIN ¿(Y) or (N)?: ");
@@ -39,8 +39,7 @@ public class InterfaceConsola {
 
         
     }
-
-            
+      
 
     private void instrucciones(){
          System.out.println("\t\t\t\t-----------------------\t");
@@ -163,8 +162,6 @@ public class InterfaceConsola {
     public static void main(String[] args) throws InterruptedException {
         
     new InterfaceConsola();
-    
-
    
 
     }
