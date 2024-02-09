@@ -3,15 +3,20 @@ import java.util.Random;
 public class TresEnRaya {
     private char[][] tablero;
     
-
+     
     public TresEnRaya(){
         this.tablero= new char [][] {{'-','-','-'}, {'-','-','-'}, {'-','-','-'}};
         
     }
 
-
+    // devuelve una copia del tablero para asegurarnos de que no se manipula externamente
     public char[][] getTablero() {
-        char [][] tablerocopia=tablero;
+        char[][] tablerocopia = new char[3][3];
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                tablerocopia[i][j] = tablero[i][j];
+            }
+        }
         return tablerocopia;
     }
 
@@ -53,7 +58,7 @@ public class TresEnRaya {
     }
 
     private boolean analizarPosJ(char[][] otro, int a, int b) {
-        //comprueba que la posición permite poner ficha
+        //comprueba que la posición del jugador permite poner ficha
             if (otro[a-1][b-1] == '-') {
                 return true;
             } else {
@@ -106,6 +111,8 @@ public class TresEnRaya {
     
    
 }
+
+
 
 
 
