@@ -12,7 +12,9 @@ public class InterfaceConsola {
     private int contadorJ;
     private int contadorC;
 
-
+/** Constructor de la clase
+ * El atributo rep se utiliza para dar opción a repetir partida al jugador y también hay un contador de victorias 
+ */
     public InterfaceConsola() throws InterruptedException{
         entrada= new Scanner(System.in);
         this.jugador='P';
@@ -21,7 +23,7 @@ public class InterfaceConsola {
         this.contadorJ=0;
         this.contadorC=0;
         instrucciones();
-        while(rep){  
+        while(rep){ 
             this.game=new TresEnRaya();
             estructura();
             System.out.print("TRY AGAIN ¿(Y) or (N)?: ");
@@ -39,8 +41,11 @@ public class InterfaceConsola {
 
         
     }
-      
 
+            
+/** Método para mostrar las instrucciones iniciales
+ * Incluye una opción para comenzar partida o cerrar el programa 
+ */
     private void instrucciones(){
          System.out.println("\t\t\t\t-----------------------\t");
          System.out.println("\t\t\t\tTRES EN RAYA by BertoSC\t");
@@ -72,6 +77,10 @@ public class InterfaceConsola {
         } 
     }
 
+    /** Método que se encarga de hacer las llamadas a la clase TresEnRaya 
+     * que es la que se encarga de hacer los turnos, cambiar el tablero y devolver los resultados 
+     * a InterfaceConsola para que los muestre en pantalla y pida datos al jugador
+     */
     private void estructura() throws InterruptedException{
         game.gameOver(game.getTablero());
         while(game.gameOver(game.getTablero()) ==false || game.victoria(jugador) ==false || game.victoria(cpu)==false){
@@ -144,7 +153,7 @@ public class InterfaceConsola {
         
     }
 
-
+   /** Método que solicita el estado del tablero a TresEnRaya y lo imprime por pantalla */
     private void imprimirTablero(char[][] mapa){
 
         for (int i=0; i<mapa.length; i++){
@@ -154,7 +163,7 @@ public class InterfaceConsola {
             System.out.println(); 
         }
     }
-    
+    /** Método que imprime por pantalla el marcador actual */
     private void imprimirMarcador(){
         System.out.println("JUGADOR: "+contadorJ+" CPU: "+contadorC);
     }
@@ -162,7 +171,10 @@ public class InterfaceConsola {
     public static void main(String[] args) throws InterruptedException {
         
     new InterfaceConsola();
+    
+
    
 
     }
 }
+
